@@ -40,6 +40,12 @@ let purchasedA = 0;
 let purchasedB = 0;
 let purchasedC = 0;
 
+// Initial prices for the upgrades
+let priceA = 10;
+let priceB = 100;
+let priceC = 1000;
+const priceIncreaseFactor = 1.15; // Price increases by 1.15 after each purchase
+
 // Update the counter on button click
 button.addEventListener("click", () => {
   counter++;
@@ -75,25 +81,58 @@ requestAnimationFrame(updateCounter);
 
 // Create upgrade buttons for A, B, and C
 const upgradeAButton = document.createElement("button");
-upgradeAButton.innerHTML = "🔧 Buy Upgrade A (0.1/sec for 10 units)";
+upgradeAButton.innerHTML = `🔧 Buy Upgrade A (0.1/sec for ${priceA.toFixed(2)} units)`;
 upgradeAButton.disabled = true;
 app.append(upgradeAButton);
 
 const upgradeBButton = document.createElement("button");
-upgradeBButton.innerHTML = "⚙️ Buy Upgrade B (2.0/sec for 100 units)";
+upgradeBButton.innerHTML = `⚙️ Buy Upgrade B (2.0/sec for ${priceB.toFixed(2)} units)`;
 upgradeBButton.disabled = true;
 app.append(upgradeBButton);
 
 const upgradeCButton = document.createElement("button");
-upgradeCButton.innerHTML = "🚀 Buy Upgrade C (50/sec for 1000 units)";
+upgradeCButton.innerHTML = `🚀 Buy Upgrade C (50/sec for ${priceC.toFixed(2)} units)`;
 upgradeCButton.disabled = true;
 app.append(upgradeCButton);
 
 // Step 5: Purchasing an upgrade
-const upgradeButton = document.createElement("button");
-upgradeButton.innerHTML = "💥 Buy Rocket Booster (+1 growth rate)";
-upgradeButton.disabled = true; // Initially disabled
-app.append(upgradeButton);
+// const upgradeButton = document.createElement("button");
+// upgradeButton.innerHTML = "💥 Buy Rocket Booster (+1 growth rate)";
+// upgradeButton.disabled = true; // Initially disabled
+// app.append(upgradeButton);
+
+// Step 7: Price increases
+
+// Handle the purchase of upgrades and increase the price
+upgradeAButton.addEventListener("click", () => {
+    if (counter >= priceA) {
+        counter -= priceA;
+        growthRate += 0.1;
+        purchasedA++;
+        priceA *= priceIncreaseFactor; // Increase the price for the next purchase
+        updateUI();
+    }
+});
+  
+upgradeBButton.addEventListener("click", () => {
+    if (counter >= priceB) {
+        counter -= priceB;
+        growthRate += 2.0;
+        purchasedB++;
+        priceB *= priceIncreaseFactor; // Increase the price for the next purchase
+        updateUI();
+    }
+});
+
+upgradeCButton.addEventListener("click", () => {
+    if (counter >= priceC) {
+        counter -= priceC;
+        growthRate += 50;
+        purchasedC++;
+        priceC *= priceIncreaseFactor; // Increase the price for the next purchase
+        updateUI();
+    }
+});
 
 // Enable or disable the upgrade button based on the counter
 function checkUpgradeAvailability() {
@@ -102,44 +141,19 @@ function checkUpgradeAvailability() {
   //   } else {
   //     upgradeButton.disabled = true;
   //   }
-  upgradeAButton.disabled = counter < 10;
-  upgradeBButton.disabled = counter < 100;
-  upgradeCButton.disabled = counter < 1000;
+  upgradeAButton.disabled = counter < priceA;
+  upgradeBButton.disabled = counter < priceB;
+  upgradeCButton.disabled = counter < priceC;
 }
 
-// Handle the purchase of the upgrades
-upgradeAButton.addEventListener("click", () => {
-  if (counter >= 10) {
-    counter -= 10;
-    growthRate += 0.1;
-    purchasedA++;
-    updateUI();
-  }
-});
-
-upgradeBButton.addEventListener("click", () => {
-  if (counter >= 100) {
-    counter -= 100;
-    growthRate += 2.0;
-    purchasedB++;
-    updateUI();
-  }
-});
-
-upgradeCButton.addEventListener("click", () => {
-  if (counter >= 1000) {
-    counter -= 1000;
-    growthRate += 50;
-    purchasedC++;
-    updateUI();
-  }
-});
-
-// Update the UI to reflect the current growth rate and purchased items
+// Update the UI to reflect the current growth rate, purchased items, and prices
 function updateUI() {
-  counterDiv.innerHTML = `${counter.toFixed(2)} rockets`;
-  growthRateDiv.innerHTML = `Growth rate: ${growthRate.toFixed(2)} rockets/sec`;
-  upgradeStatusDiv.innerHTML = `Upgrades: A: ${purchasedA}, B: ${purchasedB}, C: ${purchasedC}`;
+    counterDiv.innerHTML = `${counter.toFixed(2)} rockets`;
+    growthRateDiv.innerHTML = `Growth rate: ${growthRate.toFixed(2)} rockets/sec`;
+    upgradeStatusDiv.innerHTML = `Upgrades: A: ${purchasedA}, B: ${purchasedB}, C: ${purchasedC}`;
+    upgradeAButton.innerHTML = `🔧 Buy Upgrade A (0.1/sec for ${priceA.toFixed(2)} units)`;
+    upgradeBButton.innerHTML = `⚙️ Buy Upgrade B (2.0/sec for ${priceB.toFixed(2)} units)`;
+    upgradeCButton.innerHTML = `🚀 Buy Upgrade C (50/sec for ${priceC.toFixed(2)} units)`;
 }
 
 // Check for upgrade availability every frame
