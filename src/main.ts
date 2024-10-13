@@ -30,7 +30,7 @@ button.addEventListener("click", () => {
 
 // Step 3: Automatic Clicking
 setInterval(() => {
-    counter++;
-    counterDiv.innerHTML = `${counter} rockets`; // Use backticks for template literals
-    console.log("Counter:", counter);
-  }, 1000); // Increment counter every 1 second (1000 milliseconds)
+  counter++;
+  counterDiv.innerHTML = `${counter} rockets`; // Use backticks for template literals
+  console.log("Counter:", counter);
+}, 1000); // Increment counter every 1 second (1000 milliseconds)
