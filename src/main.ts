@@ -215,23 +215,23 @@ const priceIncreaseFactor = 1.15; // Price increases by 1.15 after each purchase
 
 // Update the counter on button click
 button.addEventListener("click", () => {
-    counter++;
-    counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`; // Update the counter display with DNA strands
+  counter++;
+  counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`; // Update the counter display with DNA strands
 });
 
 // Step 4: Continuous Growth
 let lastTime: number = 0; // Track the time of the last frame
 
 function updateCounter(currentTime: number) {
-    const deltaTime = (currentTime - lastTime) / 1000; // Convert milliseconds to seconds
-    lastTime = currentTime;
+  const deltaTime = (currentTime - lastTime) / 1000; // Convert milliseconds to seconds
+  lastTime = currentTime;
 
-    // Increment the counter by the fraction of time that has passed
-    counter += growthRate * deltaTime; // Increase by a fractional amount per frame
-    counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`; // Display with 2 decimal places
+  // Increment the counter by the fraction of time that has passed
+  counter += growthRate * deltaTime; // Increase by a fractional amount per frame
+  counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`; // Display with 2 decimal places
 
-    // Continue the animation
-    requestAnimationFrame(updateCounter);
+  // Continue the animation
+  requestAnimationFrame(updateCounter);
 }
 
 // Start the animation loop
@@ -257,56 +257,56 @@ app.append(upgradeCButton);
 
 // Handle the purchase of upgrades and increase the price
 upgradeAButton.addEventListener("click", () => {
-    if (counter >= priceA) {
-        counter -= priceA;
-        growthRate += 0.1;
-        purchasedA++;
-        priceA *= priceIncreaseFactor; // Increase the price for the next purchase
-        updateUI();
-    }
+  if (counter >= priceA) {
+    counter -= priceA;
+    growthRate += 0.1;
+    purchasedA++;
+    priceA *= priceIncreaseFactor; // Increase the price for the next purchase
+    updateUI();
+  }
 });
 
 upgradeBButton.addEventListener("click", () => {
-    if (counter >= priceB) {
-        counter -= priceB;
-        growthRate += 2.0;
-        purchasedB++;
-        priceB *= priceIncreaseFactor; // Increase the price for the next purchase
-        updateUI();
-    }
+  if (counter >= priceB) {
+    counter -= priceB;
+    growthRate += 2.0;
+    purchasedB++;
+    priceB *= priceIncreaseFactor; // Increase the price for the next purchase
+    updateUI();
+  }
 });
 
 upgradeCButton.addEventListener("click", () => {
-    if (counter >= priceC) {
-        counter -= priceC;
-        growthRate += 50;
-        purchasedC++;
-        priceC *= priceIncreaseFactor; // Increase the price for the next purchase
-        updateUI();
-    }
+  if (counter >= priceC) {
+    counter -= priceC;
+    growthRate += 50;
+    purchasedC++;
+    priceC *= priceIncreaseFactor; // Increase the price for the next purchase
+    updateUI();
+  }
 });
 
 // Enable or disable the upgrade buttons based on the counter
 function checkUpgradeAvailability() {
-    upgradeAButton.disabled = counter < priceA;
-    upgradeBButton.disabled = counter < priceB;
-    upgradeCButton.disabled = counter < priceC;
+  upgradeAButton.disabled = counter < priceA;
+  upgradeBButton.disabled = counter < priceB;
+  upgradeCButton.disabled = counter < priceC;
 }
 
 // Update the UI to reflect the current growth rate, purchased items, and prices
 function updateUI() {
-    counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`;
-    growthRateDiv.innerHTML = `Growth rate: ${growthRate.toFixed(2)} DNA/sec`;
-    upgradeStatusDiv.innerHTML = `Upgrades: A: ${purchasedA}, B: ${purchasedB}, C: ${purchasedC}`;
-    upgradeAButton.innerHTML = `🦕 Buy Herbivore Breeding Pen (0.1/sec for ${priceA.toFixed(2)} DNA)`;
-    upgradeBButton.innerHTML = `🦖 Buy Carnivore Den (2.0/sec for ${priceB.toFixed(2)} DNA)`;
-    upgradeCButton.innerHTML = `🦙 Buy Dino Theme Park (50/sec for ${priceC.toFixed(2)} DNA)`;
+  counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`;
+  growthRateDiv.innerHTML = `Growth rate: ${growthRate.toFixed(2)} DNA/sec`;
+  upgradeStatusDiv.innerHTML = `Upgrades: A: ${purchasedA}, B: ${purchasedB}, C: ${purchasedC}`;
+  upgradeAButton.innerHTML = `🦕 Buy Herbivore Breeding Pen (0.1/sec for ${priceA.toFixed(2)} DNA)`;
+  upgradeBButton.innerHTML = `🦖 Buy Carnivore Den (2.0/sec for ${priceB.toFixed(2)} DNA)`;
+  upgradeCButton.innerHTML = `🦙 Buy Dino Theme Park (50/sec for ${priceC.toFixed(2)} DNA)`;
 }
 
 // Check for upgrade availability every frame
 function monitorUpgradeAvailability() {
-    checkUpgradeAvailability();
-    requestAnimationFrame(monitorUpgradeAvailability);
+  checkUpgradeAvailability();
+  requestAnimationFrame(monitorUpgradeAvailability);
 }
 
 // Start monitoring the upgrade availability
