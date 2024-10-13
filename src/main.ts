@@ -29,8 +29,26 @@ button.addEventListener("click", () => {
 });
 
 // Step 3: Automatic Clicking
-setInterval(() => {
-  counter++;
-  counterDiv.innerHTML = `${counter} rockets`; // Use backticks for template literals
-  console.log("Counter:", counter);
-}, 1000); // Increment counter every 1 second (1000 milliseconds)
+// setInterval(() => {
+//   counter++;
+//   counterDiv.innerHTML = `${counter} rockets`; // Use backticks for template literals
+//   console.log("Counter:", counter);
+// }, 1000); // Increment counter every 1 second (1000 milliseconds)
+
+// Step 4: Continuous Growth
+let lastTime: number = 0; // Track the time of the last frame
+
+function updateCounter(currentTime: number) {
+  const deltaTime = (currentTime - lastTime) / 1000; // Convert milliseconds to seconds
+  lastTime = currentTime;
+
+  // Increment the counter by the fraction of time that has passed
+  counter += deltaTime; // Increase by a fractional amount per frame
+  counterDiv.innerHTML = `${counter.toFixed(2)} rockets`; // Display with 2 decimal places
+
+  // Continue the animation
+  requestAnimationFrame(updateCounter);
+}
+
+// Start the animation loop
+requestAnimationFrame(updateCounter);
