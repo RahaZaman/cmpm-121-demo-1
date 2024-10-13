@@ -97,55 +97,55 @@ app.append(upgradeButton);
 
 // Enable or disable the upgrade button based on the counter
 function checkUpgradeAvailability() {
-//   if (counter >= 10) {
-//     upgradeButton.disabled = false;
-//   } else {
-//     upgradeButton.disabled = true;
-//   }
-    upgradeAButton.disabled = counter < 10;
-    upgradeBButton.disabled = counter < 100;
-    upgradeCButton.disabled = counter < 1000;
+  //   if (counter >= 10) {
+  //     upgradeButton.disabled = false;
+  //   } else {
+  //     upgradeButton.disabled = true;
+  //   }
+  upgradeAButton.disabled = counter < 10;
+  upgradeBButton.disabled = counter < 100;
+  upgradeCButton.disabled = counter < 1000;
 }
 
 // Handle the purchase of the upgrades
 upgradeAButton.addEventListener("click", () => {
-    if (counter >= 10) {
-        counter -= 10;
-        growthRate += 0.1;
-        purchasedA++;
-        updateUI();
-    }
+  if (counter >= 10) {
+    counter -= 10;
+    growthRate += 0.1;
+    purchasedA++;
+    updateUI();
+  }
 });
-  
+
 upgradeBButton.addEventListener("click", () => {
-    if (counter >= 100) {
-        counter -= 100;
-        growthRate += 2.0;
-        purchasedB++;
-        updateUI();
-    }
+  if (counter >= 100) {
+    counter -= 100;
+    growthRate += 2.0;
+    purchasedB++;
+    updateUI();
+  }
 });
 
 upgradeCButton.addEventListener("click", () => {
-    if (counter >= 1000) {
-        counter -= 1000;
-        growthRate += 50;
-        purchasedC++;
-        updateUI();
-    }
+  if (counter >= 1000) {
+    counter -= 1000;
+    growthRate += 50;
+    purchasedC++;
+    updateUI();
+  }
 });
 
 // Update the UI to reflect the current growth rate and purchased items
 function updateUI() {
-    counterDiv.innerHTML = `${counter.toFixed(2)} rockets`;
-    growthRateDiv.innerHTML = `Growth rate: ${growthRate.toFixed(2)} rockets/sec`;
-    upgradeStatusDiv.innerHTML = `Upgrades: A: ${purchasedA}, B: ${purchasedB}, C: ${purchasedC}`;
+  counterDiv.innerHTML = `${counter.toFixed(2)} rockets`;
+  growthRateDiv.innerHTML = `Growth rate: ${growthRate.toFixed(2)} rockets/sec`;
+  upgradeStatusDiv.innerHTML = `Upgrades: A: ${purchasedA}, B: ${purchasedB}, C: ${purchasedC}`;
 }
 
 // Check for upgrade availability every frame
 function monitorUpgradeAvailability() {
-    checkUpgradeAvailability();
-    requestAnimationFrame(monitorUpgradeAvailability);
+  checkUpgradeAvailability();
+  requestAnimationFrame(monitorUpgradeAvailability);
 }
 
 // Start monitoring the upgrade availability
