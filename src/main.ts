@@ -11,10 +11,18 @@ const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
 
-// Step 1: Create a button to hatch dinosaurs
-const button = document.createElement("button");
-button.innerHTML = "Click Me to Hatch a Dinosaur Egg! 🦖"; // Thematic button for hatching dinosaurs
-app.append(button);
+// Description text for the image / button
+const descriptionDiv = document.createElement("div");
+descriptionDiv.innerHTML = "Click the Dinosaur Egg to make it Hatch! 🦖"; 
+app.append(descriptionDiv);
+
+// Create an image element for the Dinosaur Egg
+const eggImage = document.createElement("img");
+eggImage.src = "./src/assets/img/green-dino-egg.jpg"; // Set the source to your dino egg image
+eggImage.alt = "Dinosaur Egg"; // Alt text for accessibility
+eggImage.style.cursor = "pointer"; // Change cursor to pointer on hover
+eggImage.width = 200; // Set a width for the image (adjust as necessary)
+app.append(eggImage);
 
 // Step 2: Clicking increases counter
 let counter: number = 0;
@@ -73,7 +81,7 @@ const availableItems: Item[] = [
   },
   {
     name: "Genetic Research Lab",
-    cost: 2000,
+    cost: 1500,
     rate: 10,
     description: "Conduct experiments to enhance dinosaur traits.",
   },
@@ -82,10 +90,10 @@ const availableItems: Item[] = [
 // Track the number of each upgrade purchased
 const purchased: number[] = [0, 0, 0, 0, 0]; // Array to keep track of purchased upgrades
 
-// Update the counter on button click
-button.addEventListener("click", () => {
-  counter++;
-  counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`; // Update the counter display with DNA strands
+// Update the counter when the dinosaur egg image is clicked
+eggImage.addEventListener("click", () => {
+    counter++;
+    counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`; // Update the counter display with DNA strands
 });
 
 // Step 4: Continuous Growth
