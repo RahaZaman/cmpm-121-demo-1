@@ -13,7 +13,7 @@ app.append(header);
 
 // Description text for the image / button
 const descriptionDiv = document.createElement("div");
-descriptionDiv.innerHTML = "Click the Dinosaur Egg to make it Hatch! 🦖"; 
+descriptionDiv.innerHTML = "Click the Dinosaur Egg to make it Hatch! 🦖";
 app.append(descriptionDiv);
 
 // Create an image element for the Dinosaur Egg
@@ -92,8 +92,8 @@ const purchased: number[] = [0, 0, 0, 0, 0]; // Array to keep track of purchased
 
 // Update the counter when the dinosaur egg image is clicked
 eggImage.addEventListener("click", () => {
-    counter++;
-    counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`; // Update the counter display with DNA strands
+  counter++;
+  counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`; // Update the counter display with DNA strands
 });
 
 // Step 4: Continuous Growth
