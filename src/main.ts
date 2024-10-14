@@ -37,16 +37,16 @@ app.append(upgradeStatusDiv);
 
 // Interface for items
 interface Item {
-    name: string;
-    cost: number;
-    rate: number;
+  name: string;
+  cost: number;
+  rate: number;
 }
-  
+
 // Data-driven items
 const availableItems: Item[] = [
-    { name: "Herbivore Breeding Pen", cost: 10, rate: 0.1 },
-    { name: "Carnivore Den", cost: 100, rate: 2 },
-    { name: "Dino Theme Park", cost: 1000, rate: 50 },
+  { name: "Herbivore Breeding Pen", cost: 10, rate: 0.1 },
+  { name: "Carnivore Den", cost: 100, rate: 2 },
+  { name: "Dino Theme Park", cost: 1000, rate: 50 },
 ];
 
 // Track the number of each upgrade purchased
@@ -90,25 +90,27 @@ requestAnimationFrame(updateCounter);
 // Step 6: Multiple upgrades and status
 
 // Create upgrade buttons based on available items
-const upgradeButtons: HTMLButtonElement[] = availableItems.map((item, index) => {
+const upgradeButtons: HTMLButtonElement[] = availableItems.map(
+  (item, index) => {
     const button = document.createElement("button");
     button.innerHTML = `🦕 Buy ${item.name} (${item.rate}/sec for ${item.cost} DNA)`;
     button.disabled = true; // Initially disabled
     app.append(button);
-    
+
     // Handle purchase of upgrades and increase the price
     button.addEventListener("click", () => {
-        if (counter >= item.cost) {
-            counter -= item.cost;
-            growthRate += item.rate; // Increase growth rate
-            purchased[index]++;
-            item.cost *= 1.15; // Increase the price for the next purchase
-            updateUI();
-        }
+      if (counter >= item.cost) {
+        counter -= item.cost;
+        growthRate += item.rate; // Increase growth rate
+        purchased[index]++;
+        item.cost *= 1.15; // Increase the price for the next purchase
+        updateUI();
+      }
     });
-    
+
     return button;
-});
+  },
+);
 
 // // Create upgrade buttons for A, B, and C
 // const upgradeAButton = document.createElement("button");
@@ -159,15 +161,15 @@ const upgradeButtons: HTMLButtonElement[] = availableItems.map((item, index) => 
 
 // Update the UI to reflect the current growth rate, purchased items, and prices
 function updateUI() {
-    counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`;
-    growthRateDiv.innerHTML = `Growth rate: ${growthRate.toFixed(2)} DNA/sec`;
-    upgradeStatusDiv.innerHTML = `Upgrades: A: ${purchased[0]}, B: ${purchased[1]}, C: ${purchased[2]}`;
-    
-    // Update the buttons with the latest item data
-    upgradeButtons.forEach((button, index) => {
-        const item = availableItems[index];
-        button.innerHTML = `🦕 Buy ${item.name} (${item.rate}/sec for ${item.cost.toFixed(2)} DNA)`;
-    });
+  counterDiv.innerHTML = `${counter.toFixed(2)} DNA Strands`;
+  growthRateDiv.innerHTML = `Growth rate: ${growthRate.toFixed(2)} DNA/sec`;
+  upgradeStatusDiv.innerHTML = `Upgrades: A: ${purchased[0]}, B: ${purchased[1]}, C: ${purchased[2]}`;
+
+  // Update the buttons with the latest item data
+  upgradeButtons.forEach((button, index) => {
+    const item = availableItems[index];
+    button.innerHTML = `🦕 Buy ${item.name} (${item.rate}/sec for ${item.cost.toFixed(2)} DNA)`;
+  });
 }
 
 // // Enable or disable the upgrade buttons based on the counter
@@ -179,10 +181,10 @@ function updateUI() {
 
 // Enable or disable the upgrade buttons based on the counter
 function checkUpgradeAvailability() {
-    upgradeButtons.forEach((button, index) => {
-        button.disabled = counter < availableItems[index].cost;
-    });
-}  
+  upgradeButtons.forEach((button, index) => {
+    button.disabled = counter < availableItems[index].cost;
+  });
+}
 
 // Update the UI to reflect the current growth rate, purchased items, and prices
 // function updateUI() {
