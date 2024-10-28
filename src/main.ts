@@ -68,11 +68,36 @@ interface Item {
 }
 
 const availableItems: Item[] = [
-  { name: "Herbivore Breeding Pen", cost: 10, rate: 0.1, description: "A safe haven for gentle giants to thrive." },
-  { name: "Carnivore Den", cost: 100, rate: 2, description: "A habitat for the fiercest predators of the land." },
-  { name: "Dino Theme Park", cost: 1000, rate: 50, description: "A fun-filled park for families to interact with dinosaurs." },
-  { name: "Fossil Excavation Site", cost: 500, rate: 5, description: "Uncover ancient remains and boost your DNA collection." },
-  { name: "Genetic Research Lab", cost: 1500, rate: 10, description: "Conduct experiments to enhance dinosaur traits." }
+  {
+    name: "Herbivore Breeding Pen",
+    cost: 10,
+    rate: 0.1,
+    description: "A safe haven for gentle giants to thrive.",
+  },
+  {
+    name: "Carnivore Den",
+    cost: 100,
+    rate: 2,
+    description: "A habitat for the fiercest predators of the land.",
+  },
+  {
+    name: "Dino Theme Park",
+    cost: 1000,
+    rate: 50,
+    description: "A fun-filled park for families to interact with dinosaurs.",
+  },
+  {
+    name: "Fossil Excavation Site",
+    cost: 500,
+    rate: 5,
+    description: "Uncover ancient remains and boost your DNA collection.",
+  },
+  {
+    name: "Genetic Research Lab",
+    cost: 1500,
+    rate: 10,
+    description: "Conduct experiments to enhance dinosaur traits.",
+  },
 ];
 
 const purchasedUpgrades: number[] = [0, 0, 0, 0, 0];
@@ -98,26 +123,28 @@ function updateGameState(currentTime: number) {
 requestAnimationFrame(updateGameState);
 
 // Upgrade Button Creation and Logic
-const upgradeButtons: HTMLButtonElement[] = availableItems.map((item, index) => {
-  const button = document.createElement("button");
-  button.innerHTML = `🦕 Buy ${item.name} (${item.rate}/sec for ${item.cost} DNA)`;
-  button.disabled = true;
-  app.append(button);
+const upgradeButtons: HTMLButtonElement[] = availableItems.map(
+  (item, index) => {
+    const button = document.createElement("button");
+    button.innerHTML = `🦕 Buy ${item.name} (${item.rate}/sec for ${item.cost} DNA)`;
+    button.disabled = true;
+    app.append(button);
 
-  button.title = item.description;
+    button.title = item.description;
 
-  button.addEventListener("click", () => {
-    if (dnaCounter >= item.cost) {
-      dnaCounter -= item.cost;
-      dnaGrowthRate += item.rate;
-      purchasedUpgrades[index]++;
-      item.cost *= 1.15;
-      refreshDisplayUI();
-    }
-  });
+    button.addEventListener("click", () => {
+      if (dnaCounter >= item.cost) {
+        dnaCounter -= item.cost;
+        dnaGrowthRate += item.rate;
+        purchasedUpgrades[index]++;
+        item.cost *= 1.15;
+        refreshDisplayUI();
+      }
+    });
 
-  return button;
-});
+    return button;
+  },
+);
 
 // Update UI function with a specific name
 function refreshDisplayUI() {
