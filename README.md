@@ -5,6 +5,7 @@
 ## 🎮 Game Overview
 
 In **Dinosaur Park**:
+
 - **Manage Resources**: Collect DNA strands and use them to unlock new park features and habitats.
 - **Dynamic Gameplay**: Employ strategic upgrades to enhance DNA collection rates.
 - **Engaging Mechanics**: Designed with modern programming principles, offering a smooth and engaging gameplay experience.
@@ -12,6 +13,7 @@ In **Dinosaur Park**:
 ## 🛠 Tools and Technologies
 
 The project was built with modern tools and technologies:
+
 - **Languages**: TypeScript, HTML5, CSS
 - **Tools**: Visual Studio Code, Node.js, Git, GitHub, GitHub Actions
 - **Frameworks**: Vite
@@ -21,20 +23,26 @@ The project was built with modern tools and technologies:
 ## 🌟 Key Features
 
 ### Incremental Game Design
+
 The game follows a classic incremental model:
+
 - Players begin with basic resources and gradually acquire upgrades to increase production rates.
 - Strategic decision-making is encouraged as players balance spending resources on immediate gains vs. future growth.
 
 ### UI/UX Excellence
+
 The user experience is a priority:
+
 - **Responsive Design**: The game is designed to be accessible on various devices and screen sizes.
 - **User-Friendly Interface**: Simple and intuitive interface ensures seamless gameplay and player satisfaction.
 
 ### Robust Game Architecture
+
 - **Modular Code**: Game logic and UI components are well-separated, promoting clean, maintainable code.
 - **Data-Driven Logic**: Game data, such as upgrade costs and growth rates, is stored in JSON-like structures, allowing for easy expansion and modification.
 
 ### Advanced Game Mechanics
+
 - **Real-Time Statistics**: Players see live updates on counters and growth rates, enhancing engagement.
 - **Strategic Upgrades**: Each upgrade impacts gameplay and encourages different strategies, keeping the experience fresh and engaging.
 
@@ -60,5 +68,6 @@ The game was deployed via **GitHub Pages** and **GitHub Actions**. Following eac
 ## 📈 Development Process and Version Control
 
 Version control was strictly followed, with each development milestone marked as a unique commit:
+
 - **Commit Strategy**: Each major change was committed to allow for easy tracking of progress and to adhere to the principles of incremental development.
 - **GitHub Actions**: Automated testing and deployment ensured that the latest version was available without manual intervention.
