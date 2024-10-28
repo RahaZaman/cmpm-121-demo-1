@@ -31,7 +31,7 @@ function initializeUI() {
 
   // Create Egg Image
   eggImage = document.createElement("img");
-  eggImage.src = "./src/assets/img/green-dino-egg.jpg";
+  eggImage.src = "src/assets/img/green-dino-egg.jpg";
   eggImage.alt = "Dinosaur Egg";
   eggImage.style.cursor = "pointer";
   eggImage.width = 200;

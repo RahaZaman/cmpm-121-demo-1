@@ -65,6 +65,8 @@ This project followed an incremental development process with 10 major steps, ea
 
 The game was deployed via **GitHub Pages** and **GitHub Actions**. Following each commit, automated workflows ensured successful deployment, allowing players to access the latest version of the game at any time.
 
+- **Play Dinosaur Park**: Access the live game [here](https://rahazaman.github.io/cmpm-121-demo-1/).
+
 ## 📈 Development Process and Version Control
 
 Version control was strictly followed, with each development milestone marked as a unique commit:
