@@ -1,12 +1,12 @@
-/* The UI Refinement, and Revision for the Incremental Game Development Project was inspired by my fellow classmates projects*/ 
-/* Cat Fishing: https://6yuqing6.github.io/cat-fishing-cmpm121-demo1 */ 
-/* Eat the Candy: https://scso-ucsc.github.io/Incremental-Game-Development */ 
+/* The UI Refinement, and Revision for the Incremental Game Development Project was inspired by my fellow classmates projects*/
+/* Cat Fishing: https://6yuqing6.github.io/cat-fishing-cmpm121-demo1 */
+/* Eat the Candy: https://scso-ucsc.github.io/Incremental-Game-Development */
 
 :root {
-  font-family: 'Verdana', Geneva, sans-serif;
+  font-family: "Verdana", Geneva, sans-serif;
   color-scheme: light;
-  background-color: #E2F0D9; /* Light green, dinosaur park theme */
-  color: #2D5730; /* Dark green text for readability */
+  background-color: #e2f0d9; /* Light green, dinosaur park theme */
+  color: #2d5730; /* Dark green text for readability */
 }
 
 #app {
@@ -17,31 +17,32 @@
 }
 
 h1 {
-  color: #2D5730; /* Dark green header */
+  color: #2d5730; /* Dark green header */
 }
 
 .description {
   font-size: 1.4em;
-  color: #2D5730;
+  color: #2d5730;
   margin: 15px 0;
 }
 
-
 button {
-  background-color: #77B28C;
+  background-color: #77b28c;
   color: #fff;
   border: none;
   border-radius: 8px;
   padding: 0.8em 1.5em;
   font-size: 1em;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.25s;
+  transition:
+    transform 0.2s,
+    background-color 0.25s;
   margin: 10px; /* Existing margin */
   margin-bottom: 15px; /* Adds space between buttons */
 }
 
 button:hover {
-  background-color: #5A8C6A; /* Darker green for hover */
+  background-color: #5a8c6a; /* Darker green for hover */
 }
 
 button:active {
@@ -53,9 +54,11 @@ img {
   cursor: pointer;
 }
 
-.dna-counter, .growth-rate, .upgrade-display {
+.dna-counter,
+.growth-rate,
+.upgrade-display {
   font-size: 1.2em;
   font-weight: bold;
   margin-top: 15px;
-  color: #2D5730;
+  color: #2d5730;
 }
