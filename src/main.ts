@@ -27,6 +27,7 @@ function initializeUI() {
   // Create Description
   const descriptionDiv = document.createElement("div");
   descriptionDiv.innerHTML = "Click the Dinosaur Egg to make it Hatch! 🦖";
+  descriptionDiv.classList.add("description");
   app.append(descriptionDiv);
 
   // Create Egg Image
@@ -40,16 +41,19 @@ function initializeUI() {
   // Counter Display
   dnaCounterDisplay = document.createElement("div");
   dnaCounterDisplay.innerHTML = `${dnaCounter.toFixed(2)} DNA Strands`;
+  dnaCounterDisplay.classList.add("dna-counter");
   app.append(dnaCounterDisplay);
 
   // Growth Rate Display
   growthRateDisplay = document.createElement("div");
   growthRateDisplay.innerHTML = `Growth rate: ${dnaGrowthRate.toFixed(2)} DNA/sec`;
+  growthRateDisplay.classList.add("growth-rate");
   app.append(growthRateDisplay);
 
   // Upgrade Status Display
   upgradeStatusDisplay = document.createElement("div");
   upgradeStatusDisplay.innerHTML = `Upgrades: A: 0, B: 0, C: 0`;
+  upgradeStatusDisplay.classList.add("upgrade-display");
   app.append(upgradeStatusDisplay);
 
   // Add event listener to eggImage after it's created
